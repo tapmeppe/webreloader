@@ -65,7 +65,7 @@ let timeout = undefined
 fs.watch(
 	`${root}/${pages}`,
 	(event, filename) => {
-		if (filename && fs.lstatSync(`${root}/${pages}/${filename}`).isFile()) {
+		if (filename && fs.statSync(`${root}/${pages}/${filename}`).isFile()) {
 			clearTimeout(timeout)	// Reset the timeout to prevent unnecessary changes.
 			timeout = setTimeout(
 				(event, filename) => {
